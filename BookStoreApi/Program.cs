@@ -10,7 +10,10 @@ builder.Configuration.GetSection("BookStoreDatabase"));
 
 builder.Services.AddSingleton<BooksService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    //Property names in the web API's serialized JSON response match their corresponding property names in the CLR object type. ex: Author property serializes as Author instead of author.
+    .AddJsonOptions(
+        options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

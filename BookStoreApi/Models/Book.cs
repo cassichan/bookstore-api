@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -11,6 +12,8 @@ namespace BookStoreApi.Models
         public string? Id { get; set; }
 
         [BsonElement("Name")]
+        [JsonPropertyName("Name")]
+        //represents the property name in the web API's serialized JSON response.
         public string BookName { get; set; } = null!;
 
         public decimal Price { get; set; }
